@@ -11,11 +11,12 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: Setup conda environment
-      uses: s-weigand/setup-conda@v1
+      uses: matthewrmshin/conda-action@v1
+    - run:  conda --version
+            which python
+    - name: Make environment
       shell: bash
       run: |
-        conda --version
-        which python
         pip install cookiecutter
         cookiecutter . project_name=test author_name=D.T description='test run' open_source_license=MIT s3_bucket=TEST aws_profile=default python_version=3.7.0 python_interpreter=python github_home=DanielTemesgen --no-input
         cd test
