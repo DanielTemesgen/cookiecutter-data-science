@@ -19,14 +19,7 @@ jobs:
     - name: Build env
       run:  |
             conda --version
-            conda init bash
-            which python
-            pip install cookiecutter
-            cookiecutter . project_name=test author_name=D.T description='test run' open_source_license=MIT s3_bucket=TEST aws_profile=default python_version=3.7.0 python_interpreter=python github_home=DanielTemesgen --no-input
-            cd test
-            make create_environment
-            cd ..
-            conda install pytest, pytest-cov
+            conda install --file=requirements.txt
             pytest tests/ --junitxml=test-results.xml --cov=myproj tests/ --cov-report xml:cov.xml
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
