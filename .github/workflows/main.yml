@@ -16,7 +16,9 @@ jobs:
         python-version: 3.7
     - name: Setup conda environment
       uses: goanpeca/setup-miniconda@v1.6.0
-    - run:  conda --version
+    - name: Build env
+    - run:  |
+            conda --version
             which python
             conda install cookiecutter
             cookiecutter . project_name=test author_name=D.T description='test run' open_source_license=MIT s3_bucket=TEST aws_profile=default python_version=3.7.0 python_interpreter=python github_home=DanielTemesgen --no-input
