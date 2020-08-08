@@ -14,10 +14,9 @@ steps:
   - name: Test with pytest
     run: pytest test/ --junitxml=test-results.xml
   - name: Upload pytest test results
-    uses: actions/upload-artifact@v1
+    uses: actions/upload-artifact@v2
     with:
       name: pytest-results
-      path: junit/test-results.xml
   if: ${{ always() }}
   - name: Upload coverage
     shell: bash
