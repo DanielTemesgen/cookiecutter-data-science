@@ -12,7 +12,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Setup conda environment
       uses: s-weigand/setup-conda@v1
-    - run:  conda --version
+    - run:  |
+            conda --version
             which python
             pip install cookiecutter
             cookiecutter . project_name=test author_name=D.T description='test run' open_source_license=MIT s3_bucket=TEST aws_profile=default python_version=3.7.0 python_interpreter=python github_home=DanielTemesgen --no-input
@@ -24,7 +25,6 @@ jobs:
             pytest tests/ --junitxml=test-results.xml
             coverage report -m
     - name: Upload pytest results
-      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: test
