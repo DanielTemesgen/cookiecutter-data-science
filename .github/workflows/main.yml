@@ -20,7 +20,7 @@ jobs:
       run:  |
             conda --version
             which python
-            conda install cookiecutter
+            pip install cookiecutter
             cookiecutter . project_name=test author_name=D.T description='test run' open_source_license=MIT s3_bucket=TEST aws_profile=default python_version=3.7.0 python_interpreter=python github_home=DanielTemesgen --no-input
             cd test
             make create_environment
