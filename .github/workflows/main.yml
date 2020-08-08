@@ -27,5 +27,5 @@ jobs:
       with:
         name: pytest
         path: |
-          '*/test-results.xml'
+          /home/runner/work/cookiecutter-data-science/cookiecutter-data-science/test-results.xml
           '*/cov.xml'
