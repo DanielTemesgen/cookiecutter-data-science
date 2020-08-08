@@ -22,6 +22,7 @@ jobs:
             pip install -r requirements.txt
             pytest tests/ --junitxml=test-results.xml --cov=myproj tests/ --cov-report xml:cov.xml
     - name: Upload artifacts
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
         name: pytest
