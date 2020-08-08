@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: new_environment clean data lint requirements sync_data_to_s3 sync_data_from_s3
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -22,27 +22,27 @@ endif
 
 ## Create conda environment
 new_environment:
-    @echo ">>> Creating new conda environment..."
-    conda create -n $(PROJECT_NAME) --yes --force
-    @echo ">>> New conda environment created."
-    @echo ">>> Activate with:"
-    @echo ">>> source activate: $(PROJECT_NAME)"
-    @echo ">>> or"
-    @echo ">>> conda activate: $(PROJECT_NAME)"
+	echo ">>> Creating new conda environment..."
+	conda create -n $(PROJECT_NAME) --yes --force
+	@echo ">>> New conda environment created."
+	@echo ">>> Activate with:"
+	@echo ">>> source activate: $(PROJECT_NAME)"
+	@echo ">>> or"
+	@echo ">>> conda activate: $(PROJECT_NAME)"
 
 ## Activates new environment
 activate_environment:
-    conda activate $(PROJECT_NAME)
+	conda activate $(PROJECT_NAME)
 
 ## Install conda build environment
 conda_install_build_environment:
-    @echo ">>> Installing conda build environment..."
-    conda install --file=envs/conda_run_requirements.txt --file=envs/conda_build_requirements.txt --force --clobber --yes
+	@echo ">>> Installing conda build environment..."
+	conda install --file=envs/conda_run_requirements.txt --file=envs/conda_build_requirements.txt --force --clobber --yes
 
 ## Install pip install environment
 pip_install_build_environment:
-    @echo ">>> Installing pip build environment..."
-    pip install -r envs/pip_run_requirements.txt -r envs/pip_build_requirements.txt
+	@echo ">>> Installing pip build environment..."
+	pip install -r envs/pip_run_requirements.txt -r envs/pip_build_requirements.txt
 
 ## Install Python Dependencies
 create_environment: new_environment activate_environment conda_install_build_environment pip_install_build_environment test_environment
