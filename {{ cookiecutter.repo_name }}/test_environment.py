@@ -1,6 +1,8 @@
 import sys
 
-REQUIRED_PYTHON = "{{ cookiecutter.python_interpreter }}"
+REQUIRED_PYTHON = "{{ cookiecutter.project_name }}.python_interpreter }}"
+
+# TODO deprecate REQUIRED_PYTHON and test Python 3 version
 
 
 def main():

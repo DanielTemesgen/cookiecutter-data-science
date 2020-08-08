@@ -2,3 +2,12 @@ mkdocs
 mkdocs-cinder
 cookiecutter
 pytest
+
+
+# TODO rename back to src, make new folder for package and sample test
+# TODO tox.ini for everything
+# TODO Github action linkage
+# TODO empty test folder and commented out command
+# TODO coverage report with tox.ini
+# TODO deprecate python 2
+# TODO git tagging to centralise version
