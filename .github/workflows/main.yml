@@ -18,7 +18,8 @@ jobs:
       shell: bash
       run: |
         pip install cookiecutter
-        cookiecutter .
+        cookiecutter . project_name=test author_name=D.T description='test run' open_source_license=MIT s3_bucket=TEST aws_profile=default python_version=3.7.0 python_interpreter=python github_home=DanielTemesgen --no-input
+        cd test
         make create_environment
     - name: Test with pytest
       run: pytest test/ --junitxml=test-results.xml

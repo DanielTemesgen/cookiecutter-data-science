@@ -1,18 +1,19 @@
+{% raw %}
 {% set version = "1.1.0" %}
 {% set run_requirements = load_file_regex(
-    load_file='envs/conda_run_requirements.txt',
-    regex_pattern='.+',
-    from_recipe_dir=True).string.strip().split("\n")
-%}
+  load_file='envs/conda_run_requirements.txt',
+  regex_pattern='.+',
+  from_recipe_dir=True).string.strip().split("\n")
+  %}
 {% set dev_requirements = load_file_regex(
-    load_file='envs/conda_dev_requirements.txt',
-    regex_pattern='.+',
-    from_recipe_dir=True).string.strip().split("\n")
-%}
-
+  load_file='envs/conda_dev_requirements.txt',
+  regex_pattern='.+',
+  from_recipe_dir=True).string.strip().split("\n")
+  %}
+{% endraw %}
 package:
   name: {{ cookiecutter.repo_name }}
-  version: {{ version }}
+  version: {% raw %}{{ version }}{% endraw %}
 
 build:
   noarch: python
@@ -21,32 +22,38 @@ build:
 
 requirements:
   build:
+    {% raw %}
     {% for req in run_requirements -%}
       - {{ req }}
     {% endfor %}
     {% for req in dev_requirements -%}
       - {{ req }}
     {% endfor %}
+    {% endraw %}
   run:
+    {% raw %}
     {% for req in run_requirements -%}
       - {{ req }}
     {% endfor %}
+    {% endraw %}
 
 test:
   imports:
+    {% raw %}
     {% for req in run_requirements -%}
       - {{ req }}
     {% endfor %}
     {% for req in dev_requirements -%}
       - {{ req }}
     {% endfor %}
+    {% endraw %}
 
     commands:
       - pytest
 
 about:
-  home: https://github.com/{{ cookiecutter.project_name }}.github_home }}/{{ cookiecutter.project_name }}.repo_name }}
+  home: https://github.com/{{cookiecutter.github_home}}/{{ cookiecutter.repo_name }}
   license: {{ cookiecutter.open_source_license }}
   description: {{ cookiecutter.description }}
-  dev_url: https://github.com/{{cookiecutter.github_home}}}/{{ cookiecutter.project_name }}.repo_name }}
-  doc_source_url: https://github.com/{{ cookiecutter.project_name }}.github_home }}/{{ cookiecutter.project_name }}.repo_name }}/blob/master/README.rst
+  dev_url: https://github.com/{{cookiecutter.github_home}}/{{ cookiecutter.repo_name }}
+  doc_source_url: https://github.com/{{cookiecutter.github_home}}/{{ cookiecutter.repo_name }}/blob/master/README.rst
