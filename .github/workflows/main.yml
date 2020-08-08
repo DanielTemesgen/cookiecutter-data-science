@@ -17,7 +17,7 @@ jobs:
     - name: Setup conda environment
       uses: goanpeca/setup-miniconda@v1.6.0
     - name: Build env
-    - run:  |
+      run:  |
             conda --version
             which python
             conda install cookiecutter
