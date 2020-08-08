@@ -49,7 +49,7 @@ create_environment: new_environment activate_environment conda_install_build_env
 	@echo ">>> Environment created..."
 
 ## Make Dataset
-data: requirements
+data: create_environment
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
 ## Delete all compiled Python files
