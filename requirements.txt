@@ -2,6 +2,7 @@ mkdocs
 mkdocs-cinder
 cookiecutter
 pytest
+pytest-cov
 
 
 # TODO rename back to src, make new folder for package and sample test
