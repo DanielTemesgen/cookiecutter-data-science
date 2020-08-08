@@ -22,6 +22,9 @@ jobs:
             pip install pytest
             pip install coverage
             pytest test/ --junitxml=test-results.xml
-    - name: Job success
+            coverage report -m
+    - name: Upload pytest test results
       if: ${{ always() }}
-      run:  coverage report -m
+      uses: actions/upload-artifact@v1
+      with:
+      path: junit/test-results.xml
