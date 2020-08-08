@@ -20,8 +20,7 @@ jobs:
             make create_environment
             pip install pytest
             pip install coverage
-    - name: Test with pytest
-      run:  pytest test/ --junitxml=test-results.xml
+            pytest test/ --junitxml=test-results.xml
     - name: Job success
       if: ${{ always() }}
       shell: bash
