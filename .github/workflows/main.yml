@@ -24,5 +24,4 @@ jobs:
             pytest test/ --junitxml=test-results.xml
     - name: Job success
       if: ${{ always() }}
-      shell: bash
       run:  coverage report -m
