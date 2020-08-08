@@ -13,11 +13,7 @@ steps:
       make create_environment
   - name: Test with pytest
     run: pytest test/ --junitxml=test-results.xml
-  - name: Upload pytest test results
-    uses: actions/upload-artifact@v2
-    with:
-      name: pytest-results
-  if: ${{ always() }}
-  - name: Upload coverage
-    shell: bash
-    run: coverage report -m
+  - name: Job success
+    if: ${{ always() }}
+      shell: bash
+      run: coverage report -m
