@@ -20,13 +20,11 @@ jobs:
             make create_environment
             cd ..
             conda install pytest, pytest-cov
-            conda install coverage
             pytest tests/ --junitxml=test-results.xml --cov=myproj tests/ --cov-report xml:cov.xml
-            coverage report -m
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: pytest
         path: |
-          '*test-results.xml'
-          '*cov.xml'
+          '*/test-results.xml'
+          '*/cov.xml'
