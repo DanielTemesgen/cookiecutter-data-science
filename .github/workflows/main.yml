@@ -21,7 +21,7 @@ jobs:
             cd ..
             pip install pytest
             pip install coverage
-            pytest tests/ --junitxml=test-results.xml
+    - run:  pytest tests/ --junitxml=test-results.xml
             coverage report -m
     - name: Upload pytest results
       uses: actions/upload-artifact@v2
