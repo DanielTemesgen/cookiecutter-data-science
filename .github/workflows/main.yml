@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Setup conda
       uses: s-weigand/setup-conda@v1
-      run:  conda --version
+    - run:  conda --version
             which python
     - name: Make environment
     - shell: bash
