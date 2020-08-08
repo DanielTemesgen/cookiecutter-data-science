@@ -27,4 +27,5 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v1
       with:
+        name: test
         path: junit/test-results.xml
